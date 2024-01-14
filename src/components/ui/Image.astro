@@ -4,13 +4,11 @@ import { cn } from "../../utils/cn";
 interface Props {
   src: string;
   alt: string;
-  width?: number;
-  height?: number;
   className?: string;
   isBlurred?: boolean;
 }
 
-const { src, alt, width, height, className, isBlurred } = Astro.props;
+const { src, alt, className, isBlurred } = Astro.props;
 ---
 
 <div class="relative z-10 min-w-fit">
