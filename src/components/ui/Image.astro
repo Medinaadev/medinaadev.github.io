@@ -1,0 +1,25 @@
+---
+import { cn } from "../../utils/cn";
+
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  isBlurred?: boolean;
+}
+
+const { src, alt, width, height, className, isBlurred } = Astro.props;
+---
+
+<div class="relative z-10 min-w-fit">
+  <img src={src} alt={alt} class={className} />
+  {
+    isBlurred && (
+      <div class="absolute -z-10 inset-0 blur-xl">
+        <img src={src} alt={alt} class={cn(className, "opacity-10")} />
+      </div>
+    )
+  }
+</div>

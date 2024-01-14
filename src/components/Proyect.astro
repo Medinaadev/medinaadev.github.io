@@ -1,0 +1,45 @@
+---
+import NextjsIcon from "./icons/Nextjs.astro";
+import TailwindIcon from "./icons/Tailwind.astro";
+import Image from "./ui/Image.astro";
+
+interface Props {
+  link: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+const { link, image } = Astro.props;
+---
+
+<div class="flex flex-col gap-y-4 mt-4">
+  <div class="flex flex-col gap-y-2">
+    <h3
+      class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#37ccfa] to-[#2eadb7]"
+    >
+      <a href={link} target="_blank">
+        <slot name="title" />
+      </a>
+    </h3>
+    <p class="text-lg text-gray-400">
+      <slot name="description" />
+    </p>
+
+    <slot name="tags" />
+
+    <a
+      href={link}
+      target="_blank"
+      class="hover:scale-105 transition duration-300"
+    >
+      <Image
+        src={image.src}
+        alt={image.alt}
+        className="w-full mt-2 rounded-lg shadow-xl"
+        isBlurred
+      />
+    </a>
+  </div>
+</div>
